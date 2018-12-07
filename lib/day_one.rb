@@ -1,3 +1,5 @@
+require_relative "read"
+
 class DayOne
 
   def self.find_frequency(frequencies:)
@@ -19,13 +21,7 @@ class DayOne
   end
 end
 
-input = []
-
-File.open("input/day_one", "r") do |f|
-  f.each_line do |line|
-    input.push(line.to_i)
-  end
-end
+input = Read.get_input(filename: "input/day_one").map(&:to_i)
 
 frequency = DayOne.find_frequency(frequencies: input)
 
