@@ -1,4 +1,4 @@
-require_relative "read"
+require_relative "utility"
 
 class DayTwo
   def self.find_checksum(input:)
@@ -10,6 +10,18 @@ class DayTwo
     end
 
     contains_2 * contains_3
+  end
+
+  def self.find_common_box_id(input:)
+    input.combination(2).each do |box_id_1, box_id_2|
+      next unless Utility.levenshtein(first: box_id_1, second: box_id_2) == 1
+      puts "Box 1: #{box_id_1} Box 2: #{box_id_2}"
+      answer = []
+      box_id_1.split('').each_with_index do |value, index|
+        answer.push(value) if value == box_id_2[index]
+      end
+      return answer.join
+    end
   end
 
   def self.contains_number_of_occurences?(box_number:, number_of_occurences:)
@@ -33,8 +45,3 @@ class DayTwo
   end
 end
 
-input = Read.get_input(filename: "input/day_two")
-
-checksum = DayTwo.find_checksum(input: input)
-
-puts "Checksum: #{checksum}"

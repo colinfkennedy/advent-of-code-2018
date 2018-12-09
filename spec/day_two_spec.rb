@@ -38,4 +38,12 @@ describe DayTwo do
       end
     end
   end
+
+  describe "#find_common_box_id" do
+    context "with test input" do
+      it "returns the common box id" do
+        expect(DayTwo.find_common_box_id(input: ["abcde", "fghif", "klmno", "pqrst", "fguif", "axcye", "wvxyz"])).to eq("fgif")
+      end
+    end
+  end
 end
