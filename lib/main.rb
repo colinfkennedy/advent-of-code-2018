@@ -36,6 +36,10 @@ puts "Day Three"
 
 input_day_three = Read.get_input(filename: "input/day_three").map { |data| ::DayThree::Claim.new(data) }
 
-overlap_area = ::DayThree::Fabric.new(input_day_three).overlap_area
+fabric = ::DayThree::Fabric.new(input_day_three)
 
-puts "Overlap area: #{overlap_area}"
+fabric.mark_out_claims
+
+puts "Overlap area: #{fabric.overlapping_area}"
+
+puts "Non overlap claim ids: #{fabric.non_overlapping_claims}"
