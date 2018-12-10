@@ -1,29 +1,41 @@
-require_relative "day_one"
-require_relative "day_two"
 require_relative "read"
+# require_relative "day_one"
+#
+# puts "Day One"
+#
+# input_day_one = Read.get_input(filename: "input/day_one").map(&:to_i)
+#
+# frequency = DayOne.find_frequency(frequencies: input_day_one)
+#
+# puts "Frequency: #{frequency}"
+#
+# repeating_frequency = DayOne.find_repeating_frequency(frequencies: input_day_one)
+#
+# puts "Repeating frequency #{repeating_frequency}"
+#
+# puts ""
+#
+# require_relative "day_two"
+#
+# puts "Day Two"
+#
+# input_day_two = Read.get_input(filename: "input/day_two")
+#
+# checksum = DayTwo.find_checksum(input: input_day_two)
+#
+# puts "Checksum: #{checksum}"
+#
+# common_box_id = DayTwo.find_common_box_id(input: input_day_two)
+#
+# puts "Common box id: #{common_box_id}"
 
-puts "Day One"
+require_relative "day_three/claim"
+require_relative "day_three/fabric"
 
-input_day_one = Read.get_input(filename: "input/day_one").map(&:to_i)
+puts "Day Three"
 
-frequency = DayOne.find_frequency(frequencies: input_day_one)
+input_day_three = Read.get_input(filename: "input/day_three").map { |data| ::DayThree::Claim.new(data) }
 
-puts "Frequency: #{frequency}"
+overlap_area = ::DayThree::Fabric.new(input_day_three).overlap_area
 
-repeating_frequency = DayOne.find_repeating_frequency(frequencies: input_day_one)
-
-puts "Repeating frequency #{repeating_frequency}"
-
-puts ""
-
-puts "Day Two"
-
-input_day_two = Read.get_input(filename: "input/day_two")
-
-checksum = DayTwo.find_checksum(input: input_day_two)
-
-puts "Checksum: #{checksum}"
-
-common_box_id = DayTwo.find_common_box_id(input: input_day_two)
-
-puts "Common box id: #{common_box_id}"
+puts "Overlap area: #{overlap_area}"
