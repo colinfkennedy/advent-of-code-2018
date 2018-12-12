@@ -26,8 +26,15 @@ describe DayFour::SleepChart do
 
   let(:events) { [event_2, event_4, event_11, event_1, event_3, event_5, event_10, event_9, event_7, event_8, event_12, event_6, event_17, event_14, event_13, event_15, event_16] }
 
-  it "does something" do
-    puts "Events size: #{events.size}"
-    puts "Sorted events: #{sleep_chart.events}"
+  it "selects guard 10 as the most asleep" do
+    expect(sleep_chart.sleepy_guard.id).to eq(10)
+  end
+
+  it "selects minute 24 as guard 10's most asleep minute" do
+    expect(sleep_chart.sleepy_guard.most_asleep_minute).to eq(24)
+  end
+
+  it "responds with 240 for the guard minute product" do
+    expect(sleep_chart.guard_minute_product).to eq(240)
   end
 end
