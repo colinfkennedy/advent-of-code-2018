@@ -50,4 +50,6 @@ input_day_four = Read.get_input(filename: "input/day_four")
 
 sleep_chart = DayFour::SleepChart.new(input_day_four)
 
-puts "Answer: #{sleep_chart.guard_minute_product}"
+puts "Strategy 1 Answer: #{sleep_chart.strategy_1}"
+
+puts "Strategy 2 Answer: #{sleep_chart.strategy_2}"

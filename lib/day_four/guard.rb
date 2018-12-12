@@ -26,14 +26,31 @@ module DayFour
     end
 
     def most_asleep_minute
-      day_sleep_frequency = {}
-      days_asleep.values.each do |day|
-        day.each do |minute|
-          day_sleep_frequency[minute] = 0 if day_sleep_frequency[minute].nil?
-          day_sleep_frequency[minute] += 1
-        end
-      end
-      day_sleep_frequency.max_by{|k,v| v}[0]
+      return nil if max_minute_frequency_tuple.nil?
+      max_minute_frequency_tuple[0]
     end
+
+    def most_asleep_minute_occurence
+      return 0 if max_minute_frequency_tuple.nil?
+      max_minute_frequency_tuple[1]
+    end
+
+    private def max_minute_frequency_tuple
+      @max_minute_frequency_tuple ||= day_sleep_frequency.max_by {|k, v| v}
+    end
+
+    private def day_sleep_frequency
+      @day_sleep_frequency ||= begin
+        day_sleep_frequency = {}
+        days_asleep.values.each do |day|
+          day.each do |minute|
+            day_sleep_frequency[minute] = 0 if day_sleep_frequency[minute].nil?
+            day_sleep_frequency[minute] += 1
+          end
+        end
+        day_sleep_frequency
+      end
+    end
+
   end
 end
