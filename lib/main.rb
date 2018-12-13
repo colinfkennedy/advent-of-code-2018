@@ -28,18 +28,28 @@ require_relative "read"
 # common_box_id = DayTwo.find_common_box_id(input: input_day_two)
 #
 # puts "Common box id: #{common_box_id}"
+#
+# require_relative "day_three/claim"
+# require_relative "day_three/fabric"
+#
+# puts "Day Three"
+#
+# input_day_three = Read.get_input(filename: "input/day_three").map { |data| ::DayThree::Claim.new(data) }
+#
+# fabric = ::DayThree::Fabric.new(input_day_three)
+#
+# fabric.mark_out_claims
+#
+# puts "Overlap area: #{fabric.overlapping_area}"
+#
+# puts "Non overlap claim ids: #{fabric.non_overlapping_claims}"
 
-require_relative "day_three/claim"
-require_relative "day_three/fabric"
+require_relative "day_four/sleep_chart"
 
-puts "Day Three"
+input_day_four = Read.get_input(filename: "input/day_four")
 
-input_day_three = Read.get_input(filename: "input/day_three").map { |data| ::DayThree::Claim.new(data) }
+sleep_chart = DayFour::SleepChart.new(input_day_four)
 
-fabric = ::DayThree::Fabric.new(input_day_three)
+puts "Strategy 1 Answer: #{sleep_chart.strategy_1}"
 
-fabric.mark_out_claims
-
-puts "Overlap area: #{fabric.overlapping_area}"
-
-puts "Non overlap claim ids: #{fabric.non_overlapping_claims}"
+puts "Strategy 2 Answer: #{sleep_chart.strategy_2}"
