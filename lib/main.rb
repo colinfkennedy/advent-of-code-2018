@@ -44,12 +44,27 @@ require_relative "read"
 #
 # puts "Non overlap claim ids: #{fabric.non_overlapping_claims}"
 
-require_relative "day_four/sleep_chart"
+# require_relative "day_four/sleep_chart"
+#
+# input_day_four = Read.get_input(filename: "input/day_four")
+#
+# sleep_chart = DayFour::SleepChart.new(input_day_four)
+#
+# puts "Strategy 1 Answer: #{sleep_chart.strategy_1}"
+#
+# puts "Strategy 2 Answer: #{sleep_chart.strategy_2}"
 
-input_day_four = Read.get_input(filename: "input/day_four")
+require_relative "day_five"
 
-sleep_chart = DayFour::SleepChart.new(input_day_four)
+puts "Day Five"
 
-puts "Strategy 1 Answer: #{sleep_chart.strategy_1}"
+input_day_five = Read.get_input(filename: "input/day_five")[0]
 
-puts "Strategy 2 Answer: #{sleep_chart.strategy_2}"
+final_polymer_count = ::DayFive.new(input_day_five).polymer_units_count
+
+puts "Units: #{final_polymer_count}"
+
+efficient_polymer_count = ::DayFive.new(input_day_five).efficient_polymer_units_count
+
+puts "Efficient Polymer Units: #{efficient_polymer_count}"
+
