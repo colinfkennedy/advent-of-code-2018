@@ -53,18 +53,25 @@ require_relative "read"
 # puts "Strategy 1 Answer: #{sleep_chart.strategy_1}"
 #
 # puts "Strategy 2 Answer: #{sleep_chart.strategy_2}"
+#
+# require_relative "day_five"
+#
+# puts "Day Five"
+#
+# input_day_five = Read.get_input(filename: "input/day_five")[0]
+#
+# final_polymer_count = ::DayFive.new(input_day_five).polymer_units_count
+#
+# puts "Units: #{final_polymer_count}"
+#
+# efficient_polymer_count = ::DayFive.new(input_day_five).efficient_polymer_units_count
+#
+# puts "Efficient Polymer Units: #{efficient_polymer_count}"
 
-require_relative "day_five"
+require_relative "day_six/grid"
 
-puts "Day Five"
+input_day_six = Read.get_input(filename: "input/day_six")
 
-input_day_five = Read.get_input(filename: "input/day_five")[0]
+grid = ::DaySix::Grid.new(input_day_six)
 
-final_polymer_count = ::DayFive.new(input_day_five).polymer_units_count
-
-puts "Units: #{final_polymer_count}"
-
-efficient_polymer_count = ::DayFive.new(input_day_five).efficient_polymer_units_count
-
-puts "Efficient Polymer Units: #{efficient_polymer_count}"
-
+puts "Largest finite area: #{grid.largest_finite_area}"

@@ -1,8 +1,9 @@
 module DaySix
   class Point
-    attr_reader :x, :y
+    attr_reader :id, :x, :y
 
-    def initialize(data)
+    def initialize(id:, data:)
+      @id = id
       coords = data.split(',')
       @x = coords[0].to_i
       @y = coords[1].to_i

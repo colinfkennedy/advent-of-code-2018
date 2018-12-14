@@ -1,7 +1,7 @@
 require "day_six/point"
 
 describe ::DaySix::Point do
-  let(:point) { ::DaySix::Point.new(raw_point)}
+  let(:point) { ::DaySix::Point.new(id: 1, data: raw_point)}
 
   context "with a point 0, 0" do
     let(:raw_point) { "0, 0" }
@@ -27,7 +27,7 @@ describe ::DaySix::Point do
     end
 
     context "and another point 0, 0" do
-      let(:other_point) { ::DaySix::Point.new("0, 0") }
+      let(:other_point) { ::DaySix::Point.new(id: 2, data: "0, 0") }
 
       it "has a manhatten distance of 1 to it" do
         expect(point.manhatten_distance(other_point)).to eq(2)
@@ -35,7 +35,7 @@ describe ::DaySix::Point do
     end
 
     context "and another point 10, 100" do
-      let(:other_point) { ::DaySix::Point.new("10, 100") }
+      let(:other_point) { ::DaySix::Point.new(id: 3, data: "10, 100") }
 
       it "has a manhatten distance of 1 to it" do
         expect(point.manhatten_distance(other_point)).to eq(108)
