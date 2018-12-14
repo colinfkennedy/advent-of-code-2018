@@ -8,6 +8,18 @@ describe ::DaySeven::Step do
     expect(step.id).to eq(id)
   end
 
+  it "sets the step duration to 1" do
+    expect(step.duration).to eq(1)
+  end
+
+  context "with a step id of Z" do
+    let(:id) { "Z" }
+
+    it "sets the step duration to 26" do
+      expect(step.duration).to eq(26)
+    end
+  end
+
   describe "#add_dependency" do
     let(:step_b) { described_class.new("B") }
     let(:uncompleted_dependencies) { step.uncompleted_dependencies.to_a }
@@ -34,6 +46,7 @@ describe ::DaySeven::Step do
           step.add_dependency(step_b)
           step.add_dependency(step_c)
           step_b.complete
+          step_b.complete
           expect(uncompleted_dependencies.size).to eq(1)
           expect(uncompleted_dependencies[0]).to eq(step_c)
         end
@@ -58,9 +71,26 @@ describe ::DaySeven::Step do
       expect(step.completed).to eq(false)
     end
 
-    it "returns true for completed initially" do
+    it "returns true for completed when it matches the duration" do
       step.complete
       expect(step.completed).to eq(true)
+    end
+
+    context "with an id of E" do
+      let(:id) { "E" }
+
+      it "returns true for completed when it matches the duration" do
+        step.complete
+        expect(step.completed).to eq(false)
+        step.complete
+        expect(step.completed).to eq(false)
+        step.complete
+        expect(step.completed).to eq(false)
+        step.complete
+        expect(step.completed).to eq(false)
+        step.complete
+        expect(step.completed).to eq(true)
+      end
     end
   end
 end

@@ -20,6 +20,10 @@ module DaySeven
       step_order
     end
 
+    def total_duration(elves:, step_duration:)
+
+    end
+
     private def process_raw_instructions(raw_instructions)
       raw_instructions.each do |instruction|
         matched_instruction = instruction.match(INSTRUCTION_REGEX)

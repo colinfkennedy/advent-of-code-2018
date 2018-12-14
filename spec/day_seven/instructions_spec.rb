@@ -19,4 +19,10 @@ describe ::DaySeven::Instructions do
       expect(instructions.step_order).to eq("CABDFE")
     end
   end
+
+  describe "#total_duration" do
+    it "returns 15" do
+      expect(instructions.total_duration(elves: 2, step_duration: 0)).to eq(15)
+    end
+  end
 end
