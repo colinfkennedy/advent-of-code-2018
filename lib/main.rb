@@ -67,13 +67,23 @@ require_relative "read"
 # efficient_polymer_count = ::DayFive.new(input_day_five).efficient_polymer_units_count
 #
 # puts "Efficient Polymer Units: #{efficient_polymer_count}"
+#
+# require_relative "day_six/grid"
+#
+# input_day_six = Read.get_input(filename: "input/day_six")
+#
+# grid = ::DaySix::Grid.new(input_day_six)
+# puts "Part 1"
+# puts "Largest finite area: #{grid.largest_finite_area}"
+# puts "Part 2"
+# puts "Area less than 10k distance: #{grid.part_2}"
 
-require_relative "day_six/grid"
+require_relative "day_seven/instructions"
 
-input_day_six = Read.get_input(filename: "input/day_six")
+input_day_seven = Read.get_input(filename: "input/day_seven")
 
-grid = ::DaySix::Grid.new(input_day_six)
+instructions = ::DaySeven::Instructions.new(input_day_seven)
 puts "Part 1"
-puts "Largest finite area: #{grid.largest_finite_area}"
-puts "Part 2"
-puts "Area less than 10k distance: #{grid.part_2}"
+puts "Step order: #{instructions.step_order}"
+# puts "Part 2"
+# puts "Area less than 10k distance: #{grid.part_2}"
