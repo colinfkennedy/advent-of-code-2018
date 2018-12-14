@@ -12,4 +12,14 @@ describe ::DaySix::Grid do
       end
     end
   end
+
+  describe "#part_2" do
+    context "with test points" do
+      let(:raw_points) { ["1, 1", "1, 6", "8, 3", "3, 4", "5, 5", "8, 9"] }
+
+      it "returns 16" do
+        expect(grid.part_2(max_distance: 32)).to eq(16)
+      end
+    end
+  end
 end

@@ -43,6 +43,23 @@ module DaySix
       max_area_point[1]
     end
 
+    def part_2(max_distance: 10000)
+      coord_total_distance_tuple = {}
+      (0..max_x).each do |x|
+        (0..max_y).each do |y|
+          coord = "#{x}, #{y}"
+          coord_total_distance_tuple[coord] = get_total_distance(::DaySix::Point.new(id: "coordinate", data: coord))
+        end
+      end
+
+      points_area = coord_total_distance_tuple.values.inject(0) do |area, total_distance|
+        area += 1 if total_distance < max_distance
+        area
+      end
+
+      points_area
+    end
+
     private def get_closest_point(coord)
       closest_points = []
       closest_distance = 1000000
@@ -71,6 +88,14 @@ module DaySix
         non_infinite_points.delete(coord_closest_point_tuple["#{max_x}, #{y}"])
       end
       non_infinite_points
+    end
+
+    private def get_total_distance(coord)
+      total_distance = 0
+      points.each do |point|
+        total_distance += point.manhatten_distance(coord)
+      end
+      total_distance
     end
   end
 end

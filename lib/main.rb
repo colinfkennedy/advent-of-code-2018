@@ -73,5 +73,7 @@ require_relative "day_six/grid"
 input_day_six = Read.get_input(filename: "input/day_six")
 
 grid = ::DaySix::Grid.new(input_day_six)
-
+puts "Part 1"
 puts "Largest finite area: #{grid.largest_finite_area}"
+puts "Part 2"
+puts "Area less than 10k distance: #{grid.part_2}"
