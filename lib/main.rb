@@ -82,8 +82,8 @@ require_relative "day_seven/instructions"
 
 input_day_seven = Read.get_input(filename: "input/day_seven")
 
-instructions = ::DaySeven::Instructions.new(input_day_seven)
+instructions = ::DaySeven::Instructions.new(raw_instructions: input_day_seven, elves: 5, extra_duration: 60)
 puts "Part 1"
 puts "Step order: #{instructions.step_order}"
-# puts "Part 2"
-# puts "Area less than 10k distance: #{grid.part_2}"
+puts "Part 2"
+puts "Duration: #{instructions.total_duration}"

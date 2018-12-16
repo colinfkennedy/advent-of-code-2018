@@ -6,11 +6,11 @@ module DaySeven
 
     ALPHABET = ("A".."Z").to_a
 
-    def initialize(id)
+    def initialize(id:, extra_duration: 0)
       @id = id
       @dependencies = Set.new
       @completed = false
-      @duration = ALPHABET.index(id) + 1
+      @duration = ALPHABET.index(id) + 1 + extra_duration
       @current_progress = 0
     end
 

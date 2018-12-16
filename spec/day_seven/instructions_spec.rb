@@ -12,7 +12,9 @@ describe ::DaySeven::Instructions do
       "Step F must be finished before step E can begin."
     ]
   end
-  let(:instructions) {described_class.new(raw_instructions)}
+  let(:elves) { 1 }
+  let(:extra_duration) { 0 }
+  let(:instructions) {described_class.new(raw_instructions: raw_instructions, elves: elves, extra_duration: extra_duration)}
 
   describe "#step_order" do
     it "returns CABDFE" do
@@ -21,8 +23,22 @@ describe ::DaySeven::Instructions do
   end
 
   describe "#total_duration" do
+    let(:elves) { 2 }
+
+    before do
+      instructions.step_order
+    end
+
     it "returns 15" do
-      expect(instructions.total_duration(elves: 2, step_duration: 0)).to eq(15)
+      expect(instructions.total_duration).to eq(15)
+    end
+
+    context "with extra duration is 60" do
+      let(:extra_duration) { 60 }
+
+      it "returns 255" do
+        expect(instructions.total_duration).to eq(255)
+      end
     end
   end
 end

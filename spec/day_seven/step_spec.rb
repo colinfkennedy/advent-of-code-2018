@@ -2,7 +2,8 @@ require "day_seven/step"
 
 describe ::DaySeven::Step do
   let(:id) { "A" }
-  let(:step) { described_class.new(id) }
+  let(:extra_duration) { 0 }
+  let(:step) { described_class.new(id: id, extra_duration: extra_duration) }
 
   it "creates a step with the correct id" do
     expect(step.id).to eq(id)
@@ -21,7 +22,7 @@ describe ::DaySeven::Step do
   end
 
   describe "#add_dependency" do
-    let(:step_b) { described_class.new("B") }
+    let(:step_b) { described_class.new(id: "B") }
     let(:uncompleted_dependencies) { step.uncompleted_dependencies.to_a }
 
     it "adds a dependency to the list" do
@@ -31,7 +32,7 @@ describe ::DaySeven::Step do
     end
 
     context "with multiple dependencies" do
-      let(:step_c) { described_class.new("C") }
+      let(:step_c) { described_class.new(id: "C") }
 
       it "shows them all in the uncompleted_dependencies list" do
         step.add_dependency(step_b)
@@ -55,7 +56,7 @@ describe ::DaySeven::Step do
     end
 
     context "when adding the same dependency twice" do
-      let(:step_c) { described_class.new("C") }
+      let(:step_c) { described_class.new(id: "C") }
 
       it "only adds one step to the list" do
         step.add_dependency(step_b)
@@ -78,8 +79,13 @@ describe ::DaySeven::Step do
 
     context "with an id of E" do
       let(:id) { "E" }
+      let(:extra_duration) { 2 }
 
       it "returns true for completed when it matches the duration" do
+        step.complete
+        expect(step.completed).to eq(false)
+        step.complete
+        expect(step.completed).to eq(false)
         step.complete
         expect(step.completed).to eq(false)
         step.complete
