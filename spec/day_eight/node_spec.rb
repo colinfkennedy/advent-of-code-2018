@@ -11,4 +11,8 @@ describe ::DayEight::Node do
     expect(node.metadata[1]).to eq(1)
     expect(node.metadata[2]).to eq(2)
   end
+
+  it "has a metadata sum of 138" do
+    expect(node.all_metadata_sum).to eq(138)
+  end
 end

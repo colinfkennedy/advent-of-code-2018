@@ -87,3 +87,5 @@ puts "Part 1"
 puts "Step order: #{instructions.step_order}"
 puts "Part 2"
 puts "Duration: #{instructions.total_duration}"
+
+require_relative "day_eight/instructions"
